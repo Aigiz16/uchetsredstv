@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Ответственное_Лицо">
+          <Key>
+            <PropertyRef Name="ИД_Ответственного_Лица" />
+          </Key>
+          <Property Name="ИД_Ответственного_Лица" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Отчество" Type="nvarchar" MaxLength="150" />
+          <Property Name="Должность" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Средство">
+          <Key>
+            <PropertyRef Name="ИД_Средства" />
+          </Key>
+          <Property Name="ИД_Средства" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Инвентарный_номер" Type="int" Nullable="false" />
+          <Property Name="Модель" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Дата_приобретения" Type="date" Nullable="false" />
+          <Property Name="Стоимость" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="Ответственное_Лицо" EntityType="Self.Ответственное_Лицо" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Средство" EntityType="Self.Средство" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Ответственное_Лицо">
+          <Key>
+            <PropertyRef Name="ИД_Ответственного_Лица" />
+          </Key>
+          <Property Name="ИД_Ответственного_Лица" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Фамилия" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Имя" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Отчество" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Должность" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Средство">
+          <Key>
+            <PropertyRef Name="ИД_Средства" />
+          </Key>
+          <Property Name="ИД_Средства" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Инвентарный_номер" Type="Int32" Nullable="false" />
+          <Property Name="Модель" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Дата_приобретения" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Стоимость" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="uchet_sredstvEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ответственное_Лицо" EntityType="Self.Ответственное_Лицо" />
+          <EntitySet Name="Средство" EntityType="Self.Средство" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="uchet_sredstvEntities">
+          <EntitySetMapping Name="Ответственное_Лицо">
+            <EntityTypeMapping TypeName="Model.Ответственное_Лицо">
+              <MappingFragment StoreEntitySet="Ответственное_Лицо">
+                <ScalarProperty Name="ИД_Ответственного_Лица" ColumnName="ИД_Ответственного_Лица" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Должность" ColumnName="Должность" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Средство">
+            <EntityTypeMapping TypeName="Model.Средство">
+              <MappingFragment StoreEntitySet="Средство">
+                <ScalarProperty Name="ИД_Средства" ColumnName="ИД_Средства" />
+                <ScalarProperty Name="Инвентарный_номер" ColumnName="Инвентарный_номер" />
+                <ScalarProperty Name="Модель" ColumnName="Модель" />
+                <ScalarProperty Name="Дата_приобретения" ColumnName="Дата_приобретения" />
+                <ScalarProperty Name="Стоимость" ColumnName="Стоимость" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
